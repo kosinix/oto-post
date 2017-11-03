@@ -125,6 +125,11 @@ add_action('plugins_loaded', function() {
     $plugin->set('restApi', function(){
         return new RestApi();
     });
+
+    $plugin->set('postPage', function(){
+        return new PostPage();
+    });
+    
     $plugin->run();
    
     $otoPostInstance = $plugin;

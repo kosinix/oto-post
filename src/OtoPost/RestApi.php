@@ -12,6 +12,8 @@ class RestApi extends Core\AutoInject {
 	// Run should only contain hooks and filters
 	public function run( ){
 
+		
+
 		// $settings = $this->plugin->get('fetcher')->get_settings();
 		// list($header, $msg, $isPosted) = $this->plugin->get('restApi')->doBigContent($settings['cron_key']);
 
@@ -128,7 +130,7 @@ class RestApi extends Core\AutoInject {
 				break;
 			}
 		}
-		$this->_updateBlackList($link);
+		$this->plugin->get('fetcher')->update_blacklist($link);
 
 		// Get article title and content
 		$content = $this->plugin->get('bigContentFetcher')->getArticle($link);
@@ -195,22 +197,7 @@ class RestApi extends Core\AutoInject {
 		}
 		return '';
 	}
-	protected function _updateBlackList($link){
-		
-		$settings = $this->plugin->get('fetcher')->get_settings();
-		$blackList = explode("\n", $settings['black_list']);
-		if(!in_array($link, $blackList)){
-			$blackList[] = $link;
-		}
-		$blackList = implode("\n", $blackList);
-		$settings['black_list'] = $blackList;
-		update_option('oto_post_settings', $settings);
-	}
-
 	
-
-	
-
 	protected function _isTimeToPost($settings){
 		$dateTime1 = $this->_getLastPostDate(); // Last post date. If no post, its 0.
 		// Now time with offset

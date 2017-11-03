@@ -20,3 +20,6 @@
 2017-10-27T07:02:09+00:00: NOT time to post
 2017-10-27T07:19:04+00:00: NOT time to post
 2017-11-02T23:37:56+00:00: Fetching url "https://members.bigcontentsearch.com/articles/getting-to-know-your-composting-equipment"
+2017-11-03T10:39:58+00:00: Fetching url "https://members.bigcontentsearch.com/articles/vegetable-gardening"
+2017-11-03T11:09:06+00:00: Fetching url "https://members.bigcontentsearch.com/articles/natural-fertilizer-science-projects"
+2017-11-03T11:10:37+00:00: NOT time to post

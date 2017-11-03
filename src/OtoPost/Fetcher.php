@@ -14,7 +14,7 @@ class Fetcher extends Core\AutoInject {
 	public function defaults(){
 		return array(
             'keywords' => array(
-                array('keyword'=>'', 'category'=>'', 'tag'=>'')   
+                array('keyword'=>'', 'category'=>'', 'tag'=>'', 'tag_image'=>'')   
             ),
             'post_interval_min' => 168, // hours
             'post_interval_max' => 169,
@@ -27,5 +27,15 @@ class Fetcher extends Core\AutoInject {
         );
 	}
 
+    public function update_blacklist($link){
+        $settings = $this->get_settings();
+		$blackList = explode("\n", $settings['black_list']);
+		if(!in_array($link, $blackList)){
+			$blackList[] = $link;
+		}
+		$blackList = implode("\n", $blackList);
+		$settings['black_list'] = $blackList;
+		update_option('oto_post_settings', $settings);
+    }
 	
 }
