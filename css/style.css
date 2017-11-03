@@ -1,0 +1,121 @@
+.oto-post-form {
+    display: block;
+    padding: 50px 0;
+}
+
+.oto-post-form .button:disabled{
+    cursor: not-allowed;
+}
+.oto-post-form > div:after,
+.oto-post-form .keyword-group:after,
+.oto-post-tag-select:after {
+    content:"";
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+}
+.oto-post-form > div {
+    margin-bottom: 25px;
+}
+.oto-post-form > div > div {
+    float: left;
+}
+.oto-post-form > div > div:first-child {
+    width: 25%;
+    max-width: 150px;
+}
+.oto-post-form > div > div:nth-child(2) {
+    width: 75%;
+    
+}
+.oto-post-form > div > div:first-child label {
+    font-weight: bold;
+}
+.oto-post-form input,
+.oto-post-form select,
+.oto-post-form textarea {
+    margin: 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+}
+.oto-post-form input {
+    width: 50%;
+}
+.oto-post-form  .clipped_text{
+    width: 70px;
+}
+.oto-post-form .wide {
+    min-width: 200px;
+    width: 90%;
+    height: 100px;
+}
+.oto-post-form > div > div:nth-child(2) > div{
+    margin-bottom: 10px;
+}
+.oto-post-form > div > div:nth-child(2) > div span{
+    font-style: italic;
+}
+
+.oto-post-tag-select > div {
+    float: left;
+    width: 100px;
+}
+.oto-post-tag-select {
+    position: relative;
+}
+.oto-post-tag-select.disabled:before {
+    content:"";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #F1F1F1;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+
+.keyword-group .keyword,
+.keyword-group .category,
+.keyword-group .tag{
+    width: 30%;
+    float: left;
+    color: #000;
+}
+.keyword-group button {
+    float: left;
+    margin-left: 1px;
+    height: 27px;
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: red;
+}
+
+.keyword-group ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    opacity: 0.4;
+}
+.keyword-group ::-moz-placeholder { /* Firefox 19+ */
+    opacity: 0.4;
+}
+.keyword-group :-ms-input-placeholder { /* IE 10+ */
+    opacity: 0.4;
+}
+.keyword-group :-moz-placeholder { /* Firefox 18- */
+    opacity: 0.4;
+}
+
+.oto-options-modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    margin-top: -75px;
+    width: 200px;
+    height:150px;
+    background: #fff;
+    border: 1px solid #ccc;
+}

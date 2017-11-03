@@ -1,0 +1,14 @@
+{
+    "name": "kosinix/auto-poster",
+    "authors": [
+        {
+            "name": "kosinix",
+            "email": "kosinix@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.9",
+        "symfony/dom-crawler": "~2.8",
+        "symfony/css-selector": "~2.8"
+    }
+}
