@@ -15,7 +15,6 @@
                             <input class="keyword" type="text" name="keyword" placeholder="Keywords (required)..." value="<?php echo esc_attr($keyword);?>">
                             <input class="category" type="text" name="category" placeholder="Categories (optional)..." value="<?php echo esc_attr($category);?>">
                             <input class="tag" type="text" name="tag" placeholder="Tags (optional)..." value="<?php echo esc_attr($tag);?>">
-                            <input class="tag" type="text" name="tag_image" placeholder="Image Tags (optional)..." value="<?php echo esc_attr($tag);?>">
                             <button class="delete">X</button>
                         </div>
                     <?php }); // End array_walk ?>
@@ -23,7 +22,6 @@
                         <input id="keyword-1" class="keyword" type="text" name="keyword" placeholder="Eg. keyword1 keyword2 keyword3" value="<?php echo esc_attr($keyword);?>">
                         <input class="category" type="text" name="category" placeholder="Eg. Category1,Category Two,Category3" value="<?php echo esc_attr($category);?>">
                         <input class="tag" type="text" name="tag" placeholder="Eg. tag1,tag2,tag3" value="<?php echo esc_attr($tag);?>">
-                        <input class="tag" type="text" name="tag_image" placeholder="Eg. tag1,tag2,tag3" value="<?php echo esc_attr($tag);?>">
                         
                     </div>
                 </div>
