@@ -141,8 +141,11 @@ class RestApi extends Core\AutoInject {
 		$content = rtrim($content, '</div>');
 		$content = str_replace('<br>', "\n", $content);
 
+		$categoryNames = explode(',', $keywords['category']);
+
 		// Spin content
-		$spun = $this->plugin->get('bigContentFetcher')->spinText($content, $settings['spin_username'], $settings['spin_api']);
+		$protectedTerms = implode("\n", $categoryNames);
+		$spun = $this->plugin->get('bigContentFetcher')->spinText($content, $settings['spin_username'], $settings['spin_api'], $protectedTerms);
 		if($spun === false){
 			return array('HTTP/1.1 400 Bad Request', '', false);
 		}
@@ -158,7 +161,7 @@ class RestApi extends Core\AutoInject {
 		$dateTime->addHour(get_option( 'gmt_offset' ));
 
 		// Add post to its set's categories
-		$categoryNames = explode(',', $keywords['category']);
+		
 		$categoryIds = array();
 		foreach($categoryNames as $categoryName){
 			if($categoryName!=''){

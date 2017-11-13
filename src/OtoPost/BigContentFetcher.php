@@ -130,12 +130,13 @@ class BigContentFetcher extends Core\AutoInject {
         return strip_tags($out);
     }
 
-    function spinText($text, $email, $key){
+    function spinText($text, $email, $key, $protectedTerms){
         $curl = new Curl();
         $result = $curl->post('http://www.spinrewriter.com/action/api', array(
             'email_address' => $email,
             'api_key' => $key,
             'action' => 'unique_variation',
+            'protected_terms' => $protectedTerms,
             'text' => $text
         ));
         if(!$result->isOk()){
