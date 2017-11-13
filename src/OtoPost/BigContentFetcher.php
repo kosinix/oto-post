@@ -15,6 +15,14 @@ class BigContentFetcher extends Core\AutoInject {
         $this->password = $password;
     }
 
+    /**
+    * @returns array Set in this format: 
+    *    Array (
+    *        [keyword] => compost pit
+    *        [category] => Composting
+    *        [tag] => kk
+    *    )
+    */
     function keywordSelect($settings){
 		// Get keyword from settings
 		if(!isset($settings['keywords'])){
@@ -29,6 +37,15 @@ class BigContentFetcher extends Core\AutoInject {
             $this->plugin->get('logger')->log('Error: $keywords empty');
 			return false;
         }
+        /*
+        Format of set: 
+         Array
+                (
+                    [keyword] => compost pit
+                    [category] => Composting
+                    [tag] => kk
+                )
+        */
 		return $set;
 	}
 

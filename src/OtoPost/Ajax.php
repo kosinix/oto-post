@@ -8,11 +8,13 @@ class Ajax extends Core\AutoInject {
     function run(){
         $post = $_POST;
 
+        // Auto post handler
         // Trigger auto posting on frontend when logged out
-        add_action( 'wp_ajax_nopriv_oto_post_now', array($this, 'trigger'));
-        
+        add_action( 'wp_ajax_nopriv_oto_post_now', array($this, 'trigger_post_now'));
         // On admin
-        add_action( 'wp_ajax_oto_post_now', array($this, 'trigger'));
+        add_action( 'wp_ajax_oto_post_now', array($this, 'trigger_post_now'));
+
+        // Generate content handler
         add_action( 'wp_ajax_oto_post_generate', array($this, 'generate_content')); // Generate content
 
         // Save
@@ -21,22 +23,9 @@ class Ajax extends Core\AutoInject {
         // Restore
         add_action( 'wp_ajax_oto_post_restore', array($this, 'wp_ajax_oto_post_restore'));
     }
-    protected function _processPost($post){
-        $content = $post['content'];
-        parse_str($content, $data);
-        $data = array_merge($this->plugin->get('fetcher')->defaults(), $data);
-        update_option('oto_post_settings', $data);
-        return $data;
-    }
-
     
-    protected function _nonce_check($post){
-        if ( false === wp_verify_nonce( $post['nonce'], 'oto_post_ajax' ) ) {
-            wp_send_json(__('Wrong NONCE value.', 'oto-post'), 400);
-        }
-    }
-
-    public function trigger(){
+    // Ajax triggered auto post
+    public function trigger_post_now(){
         $post = $_POST;
         $this->_nonce_check($post);
 
@@ -132,6 +121,7 @@ class Ajax extends Core\AutoInject {
         
     }
 
+    // Generate content for the Post screen
     function generate_content(){
         $post = $_POST;
         
@@ -209,4 +199,10 @@ class Ajax extends Core\AutoInject {
 		}
 		return '';
 	}
+
+    protected function _nonce_check($post){
+        if ( false === wp_verify_nonce( $post['nonce'], 'oto_post_ajax' ) ) {
+            wp_send_json(__('Wrong NONCE value.', 'oto-post'), 400);
+        }
+    }
 }

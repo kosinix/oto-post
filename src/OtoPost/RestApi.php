@@ -157,27 +157,31 @@ class RestApi extends Core\AutoInject {
 		$dateTime = $dateTime::createNow();
 		$dateTime->addHour(get_option( 'gmt_offset' ));
 
-		// Get random category
-		$categoryName = $this->_randomCategory($keywords['category']);
-		$category = array(); // Default to Uncategorized
-		if($categoryName!=''){
-			
-			// If it doesnt exist, add it and get ID
-			$categoryId = Category::isExist($categoryName);
-			if($categoryId===false){
-				$categoryId = Category::create(array(
-					'name' => $categoryName
-				));
+		// Add post to its set's categories
+		$categoryNames = explode(',', $keywords['category']);
+		$categoryIds = array();
+		foreach($categoryNames as $categoryName){
+			if($categoryName!=''){
+				// If it doesnt exist, add it and get ID
+				$categoryId = Category::isExist($categoryName);
+				if($categoryId===false){
+					$categoryId = Category::create(array(
+						'name' => $categoryName
+					));
+				}
+				$categoryIds[] = $categoryId;
 			}
-			$category = array($categoryId);
 		}
+		
 		$postId = Post::create(array(
 			'title' => $title,
             'content' => $spun,
             'date' => $dateTime->getStringTime(),
-			'category' => $category
+			'category' => $categoryIds
 		));
 		
+		wp_set_post_tags( $postId, $keywords['tag']);
+
 		return array('HTTP/1.1 200 Ok', sprintf('Article %s posted.', $postId), true);
 		
 	}
