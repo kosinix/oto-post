@@ -80,13 +80,11 @@
 .keyword-group .keyword,
 .keyword-group .category,
 .keyword-group .tag{
-    width: 20%;
+    width: 30%;
     float: left;
     color: #000;
 }
-.keyword-group .keyword {
-    width: 30%;
-}
+
 .keyword-group button {
     float: left;
     margin-left: 1px;
